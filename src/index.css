@@ -1,95 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* KIONA font — replace with actual file when available */
+@font-face {
+  font-family: 'Kiona';
+  src: url('/fonts/kiona/Kiona-Regular.woff2') format('woff2'),
+       url('/fonts/kiona/Kiona-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kiona';
+  src: url('/fonts/kiona/Kiona-Bold.woff2') format('woff2'),
+       url('/fonts/kiona/Kiona-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* ENKI Brand Palette */
+    --background: 40 14% 94%;          /* #F1F0EC */
+    --foreground: 60 8% 7%;            /* #141412 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 16% 86%;               /* #E2DED4 */
+    --card-foreground: 60 8% 7%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 40 14% 94%;
+    --popover-foreground: 60 8% 7%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 215 33% 23%;           /* #26364D */
+    --primary-foreground: 40 14% 94%; /* #F1F0EC */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 16% 86%;          /* #E2DED4 */
+    --secondary-foreground: 215 33% 23%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 16% 86%;
+    --muted-foreground: 0 0% 36%;     /* #5B5B5B */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 215 34% 18%;            /* #1E2A3C */
+    --accent-foreground: 40 14% 94%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 10% 82%;
+    --input: 40 10% 82%;
+    --ring: 215 33% 23%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    /* ENKI custom tokens */
+    --enki-dark: 215 33% 23%;
+    --enki-darker: 215 34% 18%;
+    --enki-warm: 40 14% 94%;
+    --enki-warm-mid: 40 16% 86%;
+    --enki-text-secondary: 0 0% 36%;
+    --enki-text-tertiary: 240 1% 30%;
+    --enki-black: 0 0% 0%;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -100,6 +82,88 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Kiona', 'Montserrat', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Outline text effect for hero/headlines */
+  .text-outline {
+    -webkit-text-stroke: 2px hsl(var(--foreground));
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-outline-light {
+    -webkit-text-stroke: 2px hsl(var(--primary-foreground));
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-outline-thin {
+    -webkit-text-stroke: 1px hsl(var(--foreground));
+    -webkit-text-fill-color: transparent;
+    opacity: 0.7;
+  }
+
+  /* Grain texture overlay */
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    z-index: 1;
+  }
+
+  /* ENKI bars watermark pattern */
+  .enki-pattern {
+    position: relative;
+  }
+  .enki-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='10' width='4' height='60' fill='%2326364D'/%3E%3Crect x='16' y='5' width='4' height='70' fill='%2326364D'/%3E%3Crect x='28' y='0' width='4' height='80' fill='%2326364D'/%3E%3Crect x='40' y='8' width='4' height='65' fill='%2326364D'/%3E%3Crect x='52' y='15' width='4' height='55' fill='%2326364D'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 60px 80px;
+    z-index: 0;
+  }
+
+  /* Hairline divider */
+  .hairline {
+    @apply w-full h-px bg-border;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply px-6 py-20 md:px-12 lg:px-20 lg:py-28;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
