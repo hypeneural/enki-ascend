@@ -5,6 +5,7 @@ import FilterBar from "@/components/FilterBar";
 import ProjectCard from "@/components/ProjectCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import { projects } from "@/data/projects";
+import { SEO } from "@/components/SEO";
 
 const Empreendimentos = () => {
   const [status, setStatus] = useState("Todos");
@@ -22,6 +23,11 @@ const Empreendimentos = () => {
 
   return (
     <>
+      <SEO
+        title="Empreendimentos"
+        description="Descubra nossos empreendimentos exclusivos no litoral catarinense."
+        url="/empreendimentos"
+      />
       <Header />
       <main>
         {/* Hero */}

@@ -3,9 +3,15 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import AnimatedSection from "@/components/AnimatedSection";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const Contato = () => (
   <>
+    <SEO
+      title="Contato"
+      description="Entre em contato conosco. Estamos prontos para atender você."
+      url="/contato"
+    />
     <Header />
     <main>
       {/* Hero */}

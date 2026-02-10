@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import aboutImage from "@/assets/about-texture.jpg";
+import { SEO } from "@/components/SEO";
 
 const values = [
   { title: "Transparência", desc: "Comunicação clara em todas as etapas, do projeto à entrega." },
@@ -12,6 +13,11 @@ const values = [
 
 const Sobre = () => (
   <>
+    <SEO
+      title="Sobre Nós"
+      description="Conheça a Enki Ascend, nossa história, valores e compromisso com a qualidade."
+      url="/sobre"
+    />
     <Header />
     <main>
       {/* Hero */}
